@@ -9,7 +9,7 @@
 import UIKit
 import Genre
 
-class MainViewController: UIViewController, SceneManagerUIDelegate {
+class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneManagerUIDelegate {
 
     // MARK: Class variables & properties
     
@@ -177,6 +177,12 @@ class MainViewController: UIViewController, SceneManagerUIDelegate {
     }
     
     // MARK: Protocol methods
+    
+    func willGo(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingOptionWithIndex index: Int, onScene previousScene: Scene) {
+    }
+    
+    func went(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingOptionWithIndex index: Int, onScene previousScene: Scene) {
+    }
     
     func display(scene: Scene, forManager manager: SceneManager) {
         self.sceneTextLabel.text = scene.text ?? ""
