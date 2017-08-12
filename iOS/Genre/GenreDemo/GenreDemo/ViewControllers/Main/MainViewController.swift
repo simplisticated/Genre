@@ -39,22 +39,66 @@ class MainViewController: UIViewController, SceneManagerUIDelegate {
     let scenes = [
         Scene(
             sceneID: "initial",
-            text: "Hello",
+            text: "Hello, man!\nI came in peace.",
             image: nil,
             options: [
                 Option(
-                    optionID: "say-hi",
-                    text: "Hi",
+                    optionID: "say-hello-stranger",
+                    text: "Hello, stranger.",
                     transitionTo: "final"
                 ),
                 Option(
-                    optionID: "say-hey",
-                    text: "Hey",
+                    optionID: "say-do-not-disturb-me",
+                    text: "Hey, don't disturb me!",
+                    transitionTo: "do-not-disturb"
+                ),
+                Option(
+                    optionID: "ask-where-you-came-from",
+                    text: "Hello! Where you came from?",
+                    transitionTo: "location"
+                ),
+            ]
+        ),
+        Scene(
+            sceneID: "do-not-disturb",
+            text: "Ok, sorry.",
+            image: nil,
+            options: [
+                Option(
+                    optionID: "say-go-away",
+                    text: "Go away!",
                     transitionTo: "final"
                 ),
                 Option(
-                    optionID: "say-hey-there",
-                    text: "Hey there",
+                    optionID: "say-i-am-here-for-war",
+                    text: "I'm here for war.",
+                    transitionTo: "final"
+                ),
+                Option(
+                    optionID: "say-let-us-fight",
+                    text: "Let's fight.",
+                    transitionTo: "final"
+                ),
+            ]
+        ),
+        Scene(
+            sceneID: "location",
+            text: "I'm from the Moon.",
+            image: nil,
+            options: [
+                Option(
+                    optionID: "say-i-am-from-earth",
+                    text: "Oh, cool! I'm from Earth.",
+                    transitionTo: "final"
+                ),
+                Option(
+                    optionID: "say-i-do-not-speak-with-aliens",
+                    text: "I don't speak with aliens.",
+                    transitionTo: "final"
+                ),
+                Option(
+                    optionID: "say-go-away",
+                    text: "Go away! Earth is for humans!",
                     transitionTo: "final"
                 ),
             ]
