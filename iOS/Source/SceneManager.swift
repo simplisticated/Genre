@@ -24,6 +24,10 @@ public class SceneManager: NSObject {
         // Initialize scenes collection
         
         self.scenes = scenes
+        
+        // Initialize history
+        
+        self._history = []
     }
     
     // MARK: Deinitializer
@@ -41,11 +45,17 @@ public class SceneManager: NSObject {
         }
     }
     
-    fileprivate var _lastDisplayedScene: Scene?
+    fileprivate var _history: [Scene]!
+    
+    public var history: [Scene] {
+        get {
+            return self._history
+        }
+    }
     
     public var lastDisplayedScene: Scene? {
         get {
-            return self._lastDisplayedScene
+            return self.history.last
         }
     }
     
@@ -65,7 +75,7 @@ public class SceneManager: NSObject {
         }
         
         self.UIDelegate!.display(scene: initialScene, forManager: self)
-        self._lastDisplayedScene = initialScene
+        self._history.append(initialScene)
     }
     
     public func selectOption(withIndex index: Int, onScene scene: Scene) {
@@ -86,7 +96,7 @@ public class SceneManager: NSObject {
         self.logicDelegate?.willGo(toScene: nextScene, withManager: self, asAResultOfSelectingOptionWithIndex: index, onScene: scene)
         
         self.UIDelegate!.display(scene: nextScene, forManager: self)
-        self._lastDisplayedScene = nextScene
+        self._history.append(nextScene)
         
         self.logicDelegate?.went(toScene: nextScene, withManager: self, asAResultOfSelectingOptionWithIndex: index, onScene: scene)
     }
