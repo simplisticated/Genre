@@ -39,8 +39,9 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
     let scenes = [
         Scene(
             sceneID: "initial",
-            text: "Hello, man!\nI came in peace.",
-            image: nil,
+            content: TextContent(
+                text: "Hello, man!\nI came in peace."
+            ),
             options: [
                 Option(
                     optionID: "say-hello-stranger",
@@ -61,8 +62,9 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
         ),
         Scene(
             sceneID: "do-not-disturb",
-            text: "Ok, sorry.",
-            image: nil,
+            content: TextContent(
+                text: "Ok, sorry."
+            ),
             options: [
                 Option(
                     optionID: "say-go-away",
@@ -83,8 +85,9 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
         ),
         Scene(
             sceneID: "location",
-            text: "I'm from the Moon.",
-            image: nil,
+            content: TextContent(
+                text: "I'm from the Moon."
+            ),
             options: [
                 Option(
                     optionID: "say-i-am-from-earth",
@@ -105,8 +108,9 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
         ),
         Scene(
             sceneID: "final",
-            text: "Bye",
-            image: nil,
+            content: TextContent(
+                text: "Bye"
+            ),
             options: [
                 Option(
                     optionID: "say-bye",
@@ -185,7 +189,7 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
     }
     
     func display(scene: Scene, forManager manager: SceneManager) {
-        self.sceneTextLabel.text = scene.text ?? ""
+        self.sceneTextLabel.text = (scene.content as! TextContent).text
         self.optionOneButton.setTitle(scene.options[0].text, for: [])
         self.optionTwoButton.setTitle(scene.options[1].text, for: [])
         self.optionThreeButton.setTitle(scene.options[2].text, for: [])
