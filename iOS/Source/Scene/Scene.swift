@@ -11,19 +11,16 @@ import UIKit
 
 public struct Scene {
     public var sceneID: String
-    public var text: String?
-    public var image: UIImage?
+    public var content: Content
     public var options: [Option]
     
     public init(
         sceneID: String,
-        text: String?,
-        image: UIImage?,
+        content: Content,
         options: [Option]
     ) {
         self.sceneID = sceneID
-        self.text = text
-        self.image = image
+        self.content = content
         self.options = options
     }
 }
