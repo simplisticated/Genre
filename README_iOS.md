@@ -52,8 +52,7 @@ When user clicks any option, game should initiate transition to another scene de
 
 Each scene is defined by `Scene` struct with fields:
 - `sceneID` (simple string that must be unique),
-- `text` (the black text displayed in example above, optional),
-- `image` (can be displayed instead of text, optional),
+- `content` (the black text displayed in example above, optional),
 - `options` (collection of available options).
 
 Text and image in scene are optional, so they could be used together or not used at all (depends on your game's UI).
@@ -69,8 +68,9 @@ Usual scenario may look like this:
 let scenes = [
     Scene(
         sceneID: "initial",
-        text: "Hello, man!\nI came in peace.",
-        image: nil,
+        content: TextContent(
+            text: "Hello, man!\nI came in peace."
+        ),
         options: [
             Option(
                 optionID: "say-hello-stranger",
@@ -91,8 +91,9 @@ let scenes = [
     ),
     Scene(
         sceneID: "final",
-        text: "Bye!",
-        image: nil,
+        content: TextContent(
+            text: "Bye!"
+        ),
         options: [
             Option(
                 optionID: "say-well-bye",
@@ -115,6 +116,69 @@ let scenes = [
 ```
 
 More detailed example you can see in [demo project](https://github.com/igormatyushkin014/Genre/blob/master/iOS/Genre/GenreDemo/GenreDemo/ViewControllers/Main/MainViewController.swift).
+
+In the example above, content is presented by `TextContent` class with `text` argument:
+
+```swift
+TextContent(
+    text: "Example text"
+)
+```
+
+Actually, it's not limited with text content only. You can use `ImageContent`:
+
+```swift
+ImageContent(
+    image: UIImage(named: "dark_sky")
+)
+```
+
+Also, you can create your own custom content class, which should be a subclass of `Content`:
+
+```swift
+class CustomContent: Content {
+    var text: String!
+    var color: UIColor!
+    var font: UIFont!
+    
+    init(text: String, color: UIColor, font: UIFont) {
+        super.init()
+        self.text = text
+        self.color = color
+        self.font = font
+    }
+}
+```
+
+Then use your custom content class in scene's description:
+
+```swift
+Scene(
+    sceneID: "final",
+    content: CustomContent(
+        text: "Do you use Mac?",
+        color: .orange,
+        font: UIFont(name: "HelveticaNeue", size: 20.0)
+    ),
+    options: [
+        Option(
+            optionID: "say-yes",
+            text: "Off course yes.",
+            transitionTo: "discussion"
+        ),
+        Option(
+            optionID: "say-yes-sometimes",
+            text: "Yes, sometimes I use it.",
+            transitionTo: "discussion"
+        ),
+        Option(
+            optionID: "say-mac-only",
+            text: "Yeah, I use Mac only.",
+            transitionTo: "discussion"
+        ),
+    ]
+)
+```
 
 ## License
 
