@@ -63,6 +63,59 @@ Next thing that you should learn is the option. It's presented by `Option` struc
 - `text` (title of the button in example above),
 - `transitionTo` (ID of scene that should appear when user selected the option).
 
+Usual scenario may look like this:
+
+```swift
+let scenes = [
+    Scene(
+        sceneID: "initial",
+        text: "Hello, man!\nI came in peace.",
+        image: nil,
+        options: [
+            Option(
+                optionID: "say-hello-stranger",
+                text: "Hello, stranger.",
+                transitionTo: "final"
+            ),
+            Option(
+                optionID: "say-do-not-disturb-me",
+                text: "Hey, don't disturb me!",
+                transitionTo: "final"
+            ),
+            Option(
+                optionID: "say-hey",
+                text: "Hey!",
+                transitionTo: "final"
+            ),
+        ]
+    ),
+    Scene(
+        sceneID: "final",
+        text: "Bye!",
+        image: nil,
+        options: [
+            Option(
+                optionID: "say-well-bye",
+                text: "Well, bye.",
+                transitionTo: "initial"
+            ),
+            Option(
+                optionID: "say-bye",
+                text: "Bye.",
+                transitionTo: "initial"
+            ),
+            Option(
+                optionID: "say-good-bye",
+                text: "Good bye.",
+                transitionTo: "initial"
+            ),
+        ]
+    ),
+]
+```
+
+More detailed example you can see in [demo project](https://github.com/igormatyushkin014/Genre/blob/master/iOS/Genre/GenreDemo/GenreDemo/ViewControllers/Main/MainViewController.swift).
+
 ## License
 
 `Genre` is available under the MIT license. See the [LICENSE](./LICENSE) file for more info.
