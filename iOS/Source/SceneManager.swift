@@ -49,6 +49,8 @@ public class SceneManager: NSObject {
         }
     }
     
+    public weak var logicDelegate: SceneManagerLogicDelegate?
+    
     public weak var UIDelegate: SceneManagerUIDelegate?
     
     // MARK: Public object methods
@@ -81,8 +83,12 @@ public class SceneManager: NSObject {
             return
         }
         
+        self.logicDelegate?.willGo(toScene: nextScene, withManager: self, asAResultOfSelectingOptionWithIndex: index, onScene: scene)
+        
         self.UIDelegate!.display(scene: nextScene, forManager: self)
         self._lastDisplayedScene = nextScene
+        
+        self.logicDelegate?.went(toScene: nextScene, withManager: self, asAResultOfSelectingOptionWithIndex: index, onScene: scene)
     }
     
     // MARK: Private object methods
