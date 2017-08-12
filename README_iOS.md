@@ -156,25 +156,25 @@ Then use your custom content class in scene's description:
 Scene(
     sceneID: "final",
     content: CustomContent(
-        text: "What's your age?",
+        text: "Do you use Mac?",
         color: .orange,
         font: UIFont(name: "HelveticaNeue", size: 20.0)
     ),
     options: [
         Option(
-            optionID: "say-well-bye",
-            text: "Well, bye.",
-            transitionTo: "initial"
+            optionID: "say-yes",
+            text: "Off course yes.",
+            transitionTo: "discussion"
         ),
         Option(
-            optionID: "say-bye",
-            text: "Bye.",
-            transitionTo: "initial"
+            optionID: "say-yes-sometimes",
+            text: "Yes, sometimes I use it.",
+            transitionTo: "discussion"
         ),
         Option(
-            optionID: "say-good-bye",
-            text: "Good bye.",
-            transitionTo: "initial"
+            optionID: "say-mac-only",
+            text: "Yeah, I use Mac only.",
+            transitionTo: "discussion"
         ),
     ]
 )
