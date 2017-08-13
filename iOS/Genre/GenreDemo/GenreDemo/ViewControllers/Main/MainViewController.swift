@@ -58,7 +58,8 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
                     text: "Hello! Where you came from?",
                     transitionTo: "location"
                 ),
-            ]
+            ],
+            userInfo: nil
         ),
         Scene(
             sceneID: "do-not-disturb",
@@ -81,7 +82,8 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
                     text: "Let's fight.",
                     transitionTo: "final"
                 ),
-            ]
+            ],
+            userInfo: nil
         ),
         Scene(
             sceneID: "location",
@@ -104,7 +106,8 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
                     text: "Go away! Earth is for humans!",
                     transitionTo: "final"
                 ),
-            ]
+            ],
+            userInfo: nil
         ),
         Scene(
             sceneID: "final",
@@ -127,7 +130,8 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
                     text: "Well, bye.",
                     transitionTo: "initial"
                 ),
-            ]
+            ],
+            userInfo: nil
         ),
     ]
     
