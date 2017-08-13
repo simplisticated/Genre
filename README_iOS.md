@@ -53,7 +53,8 @@ When user clicks any option, game should initiate transition to another scene de
 Each scene is defined by `Scene` struct with fields:
 - `sceneID` (simple string that must be unique),
 - `content` (the black text displayed in example above, optional),
-- `options` (collection of available options).
+- `options` (collection of available options),
+- `userInfo` (any other information that should be transferred to the scene, optional).
 
 Text and image in scene are optional, so they could be used together or not used at all (depends on your game's UI).
 
@@ -87,7 +88,8 @@ let scenes = [
                 text: "Hey!",
                 transitionTo: "final"
             ),
-        ]
+        ],
+        userInfo: nil
     ),
     Scene(
         sceneID: "final",
@@ -110,7 +112,8 @@ let scenes = [
                 text: "Good bye.",
                 transitionTo: "initial"
             ),
-        ]
+        ],
+        userInfo: nil
     ),
 ]
 ```
@@ -176,6 +179,31 @@ Scene(
             text: "Yeah, I use Mac only.",
             transitionTo: "discussion"
         ),
+    ],
+    userInfo: nil
+)
+```
+
+Other important element of `Scene` structure is `userInfo`. This is a dictionary with string keys and values of any type. You can pass any data to the scene via this parameter. Example:
+
+```swift
+Scene(
+    sceneID: "initial",
+    content: TextContent(
+        text: "Hello!"
+    ),
+    options: [
+        Option(
+            optionID: "say-hello",
+            text: "Hello",
+            transitionTo: "discussion"
+        )
+    ],
+    userInfo: [
+        "content-text-color": UIColor.purple,
+        "content-font": UIFont(name: "HelveticaNeue-Thin", size: 36.0),
+        "option-text-color": UIColor.orange,
+        "option-font": UIFont(name: "HelveticaNeue", size: 20.0),
     ]
 )
 ```
