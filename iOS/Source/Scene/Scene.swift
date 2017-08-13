@@ -13,14 +13,17 @@ public struct Scene {
     public var sceneID: String
     public var content: Content
     public var options: [Option]
+    public var userInfo: [String : Any]?
     
     public init(
         sceneID: String,
         content: Content,
-        options: [Option]
+        options: [Option],
+        userInfo: [String : Any]?
     ) {
         self.sceneID = sceneID
         self.content = content
         self.options = options
+        self.userInfo = userInfo
     }
 }
