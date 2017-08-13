@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Genre"
-  s.version      = "1.2"
+  s.version      = "1.3"
   s.summary      = "Engine for text games."
 
   # This description is used to generate tags and improve search results.
