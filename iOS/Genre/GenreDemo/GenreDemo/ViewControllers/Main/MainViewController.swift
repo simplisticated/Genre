@@ -28,11 +28,11 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
     
     @IBOutlet fileprivate weak var sceneTextLabel: UILabel!
     
-    @IBOutlet fileprivate weak var optionOneButton: UIButton!
+    @IBOutlet fileprivate weak var actionOneButton: UIButton!
     
-    @IBOutlet fileprivate weak var optionTwoButton: UIButton!
+    @IBOutlet fileprivate weak var actionTwoButton: UIButton!
     
-    @IBOutlet fileprivate weak var optionThreeButton: UIButton!
+    @IBOutlet fileprivate weak var actionThreeButton: UIButton!
     
     // MARK: Object variables & properties
     
@@ -42,19 +42,19 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
             content: TextContent(
                 text: "Hello, man!\nI came in peace."
             ),
-            options: [
-                Option(
-                    optionID: "say-hello-stranger",
+            actions: [
+                Action(
+                    actionID: "say-hello-stranger",
                     text: "Hello, stranger.",
                     transitionTo: "final"
                 ),
-                Option(
-                    optionID: "say-do-not-disturb-me",
+                Action(
+                    actionID: "say-do-not-disturb-me",
                     text: "Hey, don't disturb me!",
                     transitionTo: "do-not-disturb"
                 ),
-                Option(
-                    optionID: "ask-where-you-came-from",
+                Action(
+                    actionID: "ask-where-you-came-from",
                     text: "Hello! Where you came from?",
                     transitionTo: "location"
                 ),
@@ -66,19 +66,19 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
             content: TextContent(
                 text: "Ok, sorry."
             ),
-            options: [
-                Option(
-                    optionID: "say-go-away",
+            actions: [
+                Action(
+                    actionID: "say-go-away",
                     text: "Go away!",
                     transitionTo: "final"
                 ),
-                Option(
-                    optionID: "say-i-am-here-for-war",
+                Action(
+                    actionID: "say-i-am-here-for-war",
                     text: "I'm here for war.",
                     transitionTo: "final"
                 ),
-                Option(
-                    optionID: "say-let-us-fight",
+                Action(
+                    actionID: "say-let-us-fight",
                     text: "Let's fight.",
                     transitionTo: "final"
                 ),
@@ -90,19 +90,19 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
             content: TextContent(
                 text: "I'm from the Moon."
             ),
-            options: [
-                Option(
-                    optionID: "say-i-am-from-earth",
+            actions: [
+                Action(
+                    actionID: "say-i-am-from-earth",
                     text: "Oh, cool! I'm from Earth.",
                     transitionTo: "final"
                 ),
-                Option(
-                    optionID: "say-i-do-not-speak-with-aliens",
+                Action(
+                    actionID: "say-i-do-not-speak-with-aliens",
                     text: "I don't speak with aliens.",
                     transitionTo: "final"
                 ),
-                Option(
-                    optionID: "say-go-away",
+                Action(
+                    actionID: "say-go-away",
                     text: "Go away! Earth is for humans!",
                     transitionTo: "final"
                 ),
@@ -114,19 +114,19 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
             content: TextContent(
                 text: "Bye"
             ),
-            options: [
-                Option(
-                    optionID: "say-bye",
+            actions: [
+                Action(
+                    actionID: "say-bye",
                     text: "Bye!",
                     transitionTo: "initial"
                 ),
-                Option(
-                    optionID: "say-good-bye",
+                Action(
+                    actionID: "say-good-bye",
                     text: "Good bye.",
                     transitionTo: "initial"
                 ),
-                Option(
-                    optionID: "say-well-bye",
+                Action(
+                    actionID: "say-well-bye",
                     text: "Well, bye.",
                     transitionTo: "initial"
                 ),
@@ -160,43 +160,43 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
     
     // MARK: Actions
     
-    @IBAction func optionOneButtonDidTap(_ sender: Any) {
+    @IBAction func actionOneButtonDidTap(_ sender: Any) {
         guard let currentScene = self.sceneManager.lastDisplayedScene else {
             return
         }
         
-        self.sceneManager.selectOption(withIndex: 0, onScene: currentScene)
+        self.sceneManager.selectAction(withIndex: 0, onScene: currentScene)
     }
     
-    @IBAction func optionTwoButtonDidTap(_ sender: Any) {
+    @IBAction func actionTwoButtonDidTap(_ sender: Any) {
         guard let currentScene = self.sceneManager.lastDisplayedScene else {
             return
         }
         
-        self.sceneManager.selectOption(withIndex: 1, onScene: currentScene)
+        self.sceneManager.selectAction(withIndex: 1, onScene: currentScene)
     }
     
-    @IBAction func optionThreeButtonDidTap(_ sender: Any) {
+    @IBAction func actionThreeButtonDidTap(_ sender: Any) {
         guard let currentScene = self.sceneManager.lastDisplayedScene else {
             return
         }
         
-        self.sceneManager.selectOption(withIndex: 2, onScene: currentScene)
+        self.sceneManager.selectAction(withIndex: 2, onScene: currentScene)
     }
     
     // MARK: Protocol methods
     
-    func willGo(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingOptionWithIndex index: Int, onScene previousScene: Scene) {
+    func willGo(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingActionWithIndex index: Int, onScene previousScene: Scene) {
     }
     
-    func went(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingOptionWithIndex index: Int, onScene previousScene: Scene) {
+    func went(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingActionWithIndex index: Int, onScene previousScene: Scene) {
     }
     
     func display(scene: Scene, forManager manager: SceneManager) {
         self.sceneTextLabel.text = (scene.content as! TextContent).text
-        self.optionOneButton.setTitle(scene.options[0].text, for: [])
-        self.optionTwoButton.setTitle(scene.options[1].text, for: [])
-        self.optionThreeButton.setTitle(scene.options[2].text, for: [])
+        self.actionOneButton.setTitle(scene.actions[0].text, for: [])
+        self.actionTwoButton.setTitle(scene.actions[1].text, for: [])
+        self.actionThreeButton.setTitle(scene.actions[2].text, for: [])
     }
     
 }

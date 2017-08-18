@@ -11,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="GenreDemo" customModuleProvider="target">
             <connections>
-                <outlet property="optionOneButton" destination="0mp-nD-znM" id="8s4-V0-b9Q"/>
-                <outlet property="optionThreeButton" destination="jBd-47-ndE" id="WhL-xZ-c9n"/>
-                <outlet property="optionTwoButton" destination="DYM-K9-pZa" id="huO-0l-aoF"/>
+                <outlet property="actionOneButton" destination="0mp-nD-znM" id="P8z-1C-dmx"/>
+                <outlet property="actionThreeButton" destination="jBd-47-ndE" id="alC-Ob-Wnb"/>
+                <outlet property="actionTwoButton" destination="DYM-K9-pZa" id="WLj-mI-my7"/>
                 <outlet property="sceneTextLabel" destination="HOs-dH-34K" id="q9Q-Jd-lrC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,23 +28,23 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Qhi-Kx-MGq"/>
                     </constraints>
-                    <state key="normal" title="Option 3"/>
+                    <state key="normal" title="Action 3"/>
                     <connections>
-                        <action selector="optionThreeButtonDidTap:" destination="-1" eventType="touchUpInside" id="k8B-Vb-pAa"/>
+                        <action selector="actionThreeButtonDidTap:" destination="-1" eventType="touchUpInside" id="Oc2-jz-CD2"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYM-K9-pZa">
                     <rect key="frame" x="16" y="470" width="288" height="40"/>
-                    <state key="normal" title="Option 2"/>
+                    <state key="normal" title="Action 2"/>
                     <connections>
-                        <action selector="optionTwoButtonDidTap:" destination="-1" eventType="touchUpInside" id="O5T-Kx-2rM"/>
+                        <action selector="actionTwoButtonDidTap:" destination="-1" eventType="touchUpInside" id="8XS-u3-P0M"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mp-nD-znM">
                     <rect key="frame" x="16" y="422" width="288" height="40"/>
-                    <state key="normal" title="Option 1"/>
+                    <state key="normal" title="Action 1"/>
                     <connections>
-                        <action selector="optionOneButtonDidTap:" destination="-1" eventType="touchUpInside" id="CgU-Ap-Bfp"/>
+                        <action selector="actionOneButtonDidTap:" destination="-1" eventType="touchUpInside" id="ltG-70-2Z8"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOs-dH-34K">
@@ -72,7 +72,7 @@
                 <constraint firstItem="DYM-K9-pZa" firstAttribute="leading" secondItem="jBd-47-ndE" secondAttribute="leading" id="xKV-uw-Ha8"/>
                 <constraint firstAttribute="bottom" secondItem="jBd-47-ndE" secondAttribute="bottom" constant="10" id="yfu-Sb-ttg"/>
             </constraints>
-            <point key="canvasLocation" x="-294" y="79"/>
+            <point key="canvasLocation" x="-351" y="19"/>
         </view>
     </objects>
 </document>
