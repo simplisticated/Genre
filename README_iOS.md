@@ -34,34 +34,34 @@ or
 
 ## Explanation
 
-Let's start with library's terminology. Usually, text game is divided into many screens, where you can read instruction and select one of available options. Regular screen can look like this:
+Let's start with library's terminology. Usually, text game is divided into many screens, where you can read instruction and select one of available actions. Regular screen can look like this:
 
 <p align="center">
 <img src="https://github.com/igormatyushkin014/Genre/blob/master/Images/scene_example.png" alt="Scene example" title="Scene example" width="30%" height="30%">
 </p>
 
-Scene has its own text located on the top of the screen in the example above. Also, you can see three buttons with blue title: they are so-called `options`. Now let's mark all details from example screen:
+Scene has its own text located on the top of the screen in the example above. Also, you can see three buttons with blue title: they are so-called `actions`. Now let's mark all details from example screen:
 
 <p align="center">
 <img src="https://github.com/igormatyushkin014/Genre/blob/master/Images/scene_example_with_explanation.png" alt="Scene example" title="Scene example" width="30%" height="30%">
 </p>
 
-When user clicks any option, game should initiate transition to another scene depending on selected option. That's all that you need to know for the start.
+When user clicks any action, game should initiate transition to another scene depending on selected action. That's all that you need to know for the start.
 
 ## Usage
 
 Each scene is defined by `Scene` struct with fields:
 - `sceneID` (simple string that must be unique),
 - `content` (the black text displayed in example above, optional),
-- `options` (collection of available options),
+- `actions` (collection of available actions),
 - `userInfo` (any other information that should be transferred to the scene, optional).
 
 Text and image in scene are optional, so they could be used together or not used at all (depends on your game's UI).
 
-Next thing that you should learn is the option. It's presented by `Option` struct with fields:
-- `optionID` (unique string),
+Next thing that you should learn is the action. It's presented by `Action` struct with fields:
+- `actionID` (unique string),
 - `text` (title of the button in example above),
-- `transitionTo` (ID of scene that should appear when user selected the option).
+- `transitionTo` (ID of scene that should appear when user selected the action).
 
 Usual scenario may look like this:
 
@@ -72,19 +72,19 @@ let scenes = [
         content: TextContent(
             text: "Hello, man!\nI came in peace."
         ),
-        options: [
-            Option(
-                optionID: "say-hello-stranger",
+        actions: [
+            Action(
+                actionID: "say-hello-stranger",
                 text: "Hello, stranger.",
                 transitionTo: "final"
             ),
-            Option(
-                optionID: "say-do-not-disturb-me",
+            Action(
+                actionID: "say-do-not-disturb-me",
                 text: "Hey, don't disturb me!",
                 transitionTo: "final"
             ),
-            Option(
-                optionID: "say-hey",
+            Action(
+                actionID: "say-hey",
                 text: "Hey!",
                 transitionTo: "final"
             ),
@@ -96,19 +96,19 @@ let scenes = [
         content: TextContent(
             text: "Bye!"
         ),
-        options: [
-            Option(
-                optionID: "say-well-bye",
+        actions: [
+            Action(
+                actionID: "say-well-bye",
                 text: "Well, bye.",
                 transitionTo: "initial"
             ),
-            Option(
-                optionID: "say-bye",
+            Action(
+                actionID: "say-bye",
                 text: "Bye.",
                 transitionTo: "initial"
             ),
-            Option(
-                optionID: "say-good-bye",
+            Action(
+                actionID: "say-good-bye",
                 text: "Good bye.",
                 transitionTo: "initial"
             ),
@@ -136,10 +136,10 @@ ImageContent(
 )
 ```
 
-Also, you can create your own custom content class, which should be a subclass of `Content`:
+Also, you can create your own custom content class, which should be a subclass of `BaseContent`:
 
 ```swift
-class CustomContent: Content {
+class CustomContent: BaseContent {
     var text: String!
     var color: UIColor!
     var font: UIFont!
@@ -163,19 +163,19 @@ Scene(
         color: .orange,
         font: UIFont(name: "HelveticaNeue", size: 20.0)
     ),
-    options: [
-        Option(
-            optionID: "say-yes",
+    actions: [
+        Action(
+            actionID: "say-yes",
             text: "Off course yes.",
             transitionTo: "discussion"
         ),
-        Option(
-            optionID: "say-yes-sometimes",
+        Action(
+            actionID: "say-yes-sometimes",
             text: "Yes, sometimes I use it.",
             transitionTo: "discussion"
         ),
-        Option(
-            optionID: "say-mac-only",
+        Action(
+            actionID: "say-mac-only",
             text: "Yeah, I use Mac only.",
             transitionTo: "discussion"
         ),
@@ -192,9 +192,9 @@ Scene(
     content: TextContent(
         text: "Hello!"
     ),
-    options: [
-        Option(
-            optionID: "say-hello",
+    actions: [
+        Action(
+            actionID: "say-hello",
             text: "Hello",
             transitionTo: "discussion"
         )
@@ -202,8 +202,8 @@ Scene(
     userInfo: [
         "content-text-color": UIColor.purple,
         "content-font": UIFont(name: "HelveticaNeue-Thin", size: 36.0),
-        "option-text-color": UIColor.orange,
-        "option-font": UIFont(name: "HelveticaNeue", size: 20.0),
+        "action-text-color": UIColor.orange,
+        "action-font": UIFont(name: "HelveticaNeue", size: 20.0),
     ]
 )
 ```
