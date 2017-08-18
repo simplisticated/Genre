@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TextContent: Content {
+public class TextContent: BaseContent {
     
     // MARK: Class variables & properties
     

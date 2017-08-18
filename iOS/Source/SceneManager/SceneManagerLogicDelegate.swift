@@ -14,8 +14,8 @@ import Foundation
  */
 public protocol SceneManagerLogicDelegate: class {
     
-    func willGo(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingOptionWithIndex index: Int, onScene previousScene: Scene)
+    func willGo(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingActionWithIndex index: Int, onScene previousScene: Scene)
     
-    func went(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingOptionWithIndex index: Int, onScene previousScene: Scene)
+    func went(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingActionWithIndex index: Int, onScene previousScene: Scene)
     
 }

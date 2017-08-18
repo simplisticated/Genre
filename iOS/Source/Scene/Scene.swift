@@ -11,19 +11,19 @@ import UIKit
 
 public struct Scene {
     public var sceneID: String
-    public var content: Content
-    public var options: [Option]
+    public var content: BaseContent
+    public var actions: [Action]
     public var userInfo: [String : Any]?
     
     public init(
         sceneID: String,
-        content: Content,
-        options: [Option],
+        content: BaseContent,
+        actions: [Action],
         userInfo: [String : Any]?
     ) {
         self.sceneID = sceneID
         self.content = content
-        self.options = options
+        self.actions = actions
         self.userInfo = userInfo
     }
 }

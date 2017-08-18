@@ -78,10 +78,10 @@ public class SceneManager: NSObject {
         self._history.append(initialScene)
     }
     
-    public func selectOption(withIndex index: Int, onScene scene: Scene) {
-        let selectedOption = scene.options[index]
+    public func selectAction(withIndex index: Int, onScene scene: Scene) {
+        let selectedAction = scene.actions[index]
         
-        guard let nextSceneID = selectedOption.transitionTo else {
+        guard let nextSceneID = selectedAction.transitionTo else {
             return
         }
         
@@ -93,12 +93,12 @@ public class SceneManager: NSObject {
             return
         }
         
-        self.logicDelegate?.willGo(toScene: nextScene, withManager: self, asAResultOfSelectingOptionWithIndex: index, onScene: scene)
+        self.logicDelegate?.willGo(toScene: nextScene, withManager: self, asAResultOfSelectingActionWithIndex: index, onScene: scene)
         
         self.UIDelegate!.display(scene: nextScene, forManager: self)
         self._history.append(nextScene)
         
-        self.logicDelegate?.went(toScene: nextScene, withManager: self, asAResultOfSelectingOptionWithIndex: index, onScene: scene)
+        self.logicDelegate?.went(toScene: nextScene, withManager: self, asAResultOfSelectingActionWithIndex: index, onScene: scene)
     }
     
     // MARK: Private object methods

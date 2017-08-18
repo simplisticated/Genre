@@ -1,5 +1,5 @@
 //
-//  Content.swift
+//  BaseContent.swift
 //  Genre
 //
 //  Created by Igor Matyushkin on 12.08.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class Content {
+public class BaseContent {
     
     // MARK: Class variables & properties
     

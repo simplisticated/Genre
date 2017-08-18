@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ImageContent: Content {
+public class ImageContent: BaseContent {
     
     // MARK: Class variables & properties
     
