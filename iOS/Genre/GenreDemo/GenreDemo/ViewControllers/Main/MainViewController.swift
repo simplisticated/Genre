@@ -9,7 +9,7 @@
 import UIKit
 import Genre
 
-class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneManagerUIDelegate {
+class MainViewController: UIViewController, SceneManagerDelegate {
 
     // MARK: Class variables & properties
     
@@ -147,7 +147,7 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
         // Initialize scene manager
         
         self.sceneManager = SceneManager(scenes: self.scenes)
-        self.sceneManager.UIDelegate = self
+        self.sceneManager.delegate = self
         self.sceneManager.start(withSceneID: "initial")
     }
     
@@ -186,13 +186,7 @@ class MainViewController: UIViewController, SceneManagerLogicDelegate, SceneMana
     
     // MARK: Protocol methods
     
-    func willGo(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingActionWithIndex index: Int, onScene previousScene: Scene) {
-    }
-    
-    func went(toScene scene: Scene, withManager manager: SceneManager, asAResultOfSelectingActionWithIndex index: Int, onScene previousScene: Scene) {
-    }
-    
-    func display(scene: Scene, forManager manager: SceneManager) {
+    func display(scene: Scene, forManager manager: SceneManager, byReason reason: SceneDisplayReason) {
         self.sceneTextLabel.text = (scene.content as! TextContent).text
         self.actionOneButton.setTitle(scene.actions[0].text, for: [])
         self.actionTwoButton.setTitle(scene.actions[1].text, for: [])
