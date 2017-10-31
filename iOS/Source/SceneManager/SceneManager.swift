@@ -59,9 +59,7 @@ public class SceneManager: NSObject {
         }
     }
     
-    public weak var logicDelegate: SceneManagerLogicDelegate?
-    
-    public weak var UIDelegate: SceneManagerUIDelegate?
+    public weak var delegate: SceneManagerDelegate?
     
     // MARK: Public object methods
     
@@ -70,11 +68,11 @@ public class SceneManager: NSObject {
             return
         }
         
-        guard self.UIDelegate != nil else {
+        guard self.delegate != nil else {
             return
         }
         
-        self.UIDelegate!.display(scene: initialScene, forManager: self)
+        self.delegate!.display(scene: initialScene, forManager: self, byReason: .initialScene)
         self._history.append(initialScene)
     }
     
@@ -89,16 +87,13 @@ public class SceneManager: NSObject {
             return
         }
         
-        guard self.UIDelegate != nil else {
+        guard self.delegate != nil else {
             return
         }
         
-        self.logicDelegate?.willGo(toScene: nextScene, withManager: self, asAResultOfSelectingActionWithIndex: index, onScene: scene)
-        
-        self.UIDelegate!.display(scene: nextScene, forManager: self)
+        let reason: SceneDisplayReason = .didSelect(actionIndex: index, previousScene: scene)
+        self.delegate!.display(scene: nextScene, forManager: self, byReason: reason)
         self._history.append(nextScene)
-        
-        self.logicDelegate?.went(toScene: nextScene, withManager: self, asAResultOfSelectingActionWithIndex: index, onScene: scene)
     }
     
     // MARK: Private object methods
